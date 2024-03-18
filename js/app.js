@@ -40,7 +40,7 @@ function sortear() {
             document.getElementById('lista-sorteio').innerHTML += `<p>${listaSorteados[i]} ➡ ${listaSorteados[i + 1]}</p>`;
         }
     } else {
-        alert('O número de participantes do sorteio deve ser PAR!')
+        alert('O número de participantes do sorteio deve ser PAR!');
     }
 }
 
