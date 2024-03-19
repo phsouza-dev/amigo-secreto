@@ -18,32 +18,33 @@ function sortear() {
     listaSorteados = [];
     document.getElementById('lista-sorteio').innerHTML = listaSorteados;
 
-    if (listaIncluidos.length % 2 == 0) {
-        for (let i = 0; i < listaIncluidos.length; i++) {
-            let numeroAleatorio = obterNumeroAleatorio();
+    for (let i = 0; i < listaIncluidos.length; i++) {
+        let numeroAleatorio = obterNumeroAleatorio();
 
-            if (listaIncluidos.length != listaAleatoria.length) {
-                while (listaAleatoria.includes(numeroAleatorio)) {
-                    numeroAleatorio = obterNumeroAleatorio();
-                    if (listaIncluidos.length == listaAleatoria.length) {
-                        break;
-                    }
+        if (listaIncluidos.length != listaAleatoria.length) {
+            while (listaAleatoria.includes(numeroAleatorio)) {
+                numeroAleatorio = obterNumeroAleatorio();
+                if (listaIncluidos.length == listaAleatoria.length) {
+                    break;
                 }
-                listaSorteados.push(listaIncluidos[numeroAleatorio]);
-                listaAleatoria.push(numeroAleatorio);
-            } else {
-                break
             }
-
+            listaSorteados.push(listaIncluidos[numeroAleatorio]);
+            listaAleatoria.push(numeroAleatorio);
+        } else {
+            break
         }
 
-        for (let i = 0; i < listaSorteados.length; i += 2) {
-            console.log(listaSorteados[i]);
-            document.getElementById('lista-sorteio').innerHTML += `<p>${listaSorteados[i]} ➡ ${listaSorteados[i + 1]}</p>`;
-        }
-    } else {
-        alert('O número de participantes do sorteio deve ser PAR!');
     }
+
+    for (let i = 0; i < listaSorteados.length; i++) {
+        console.log(listaSorteados[i]);
+        if (i + 1 < listaSorteados.length) {
+            document.getElementById('lista-sorteio').innerHTML += `<p>${listaSorteados[i]} ➡ ${listaSorteados[i + 1]}</p>`;
+        } else {
+            document.getElementById('lista-sorteio').innerHTML += `<p>${listaSorteados[i]} ➡ ${listaSorteados[0]}</p>`;
+        }
+    }
+
 }
 
 function obterNumeroAleatorio() {
