@@ -9,6 +9,8 @@ function adicionar() {
         listaIncluidos.push(' ' + nome);
     }
     document.getElementById('lista-amigos').innerHTML = listaIncluidos;
+
+    document.getElementById('nome-amigo').value = '';
 }
 
 function sortear() {
