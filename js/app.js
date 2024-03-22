@@ -4,20 +4,25 @@ let listaSorteados = [];
 
 function adicionar() {
     let nome = document.getElementById('nome-amigo');
-    if (nome.value != '') {
-        listaIncluidos.push(`<span style="text-decoration: underline; cursor: pointer;" onclick="remover(this)">${nome.value}</span>`);
-        listaSorteadosText.push(nome.value);
-        gerarListaIncluidos();
-        nome.value = '';
+
+    if (!listaIncluidos.includes(`<span style="text-decoration: underline; cursor: pointer;" onclick="remover(this)">${nome.value}</span>`)) {
+        if (nome.value != '') {
+            listaIncluidos.push(`<span style="text-decoration: underline; cursor: pointer;" onclick="remover(this)">${nome.value}</span>`);
+            listaSorteadosText.push(nome.value);
+            gerarListaIncluidos();
+            nome.value = '';
+        } else {
+            alert('Não é possível adicionar um amigo secreto sem nome (vazio)');
+        }
     } else {
-        alert('Não é possível adicionar um amigo secreto sem nome (vazio)');
+        alert('O nome inserido já está na lista');
     }
 }
 
 function sortear() {
     let listaAleatoria = [];
 
-    if (listaIncluidos.length > 1) {
+    if (listaIncluidos.length >= 4) {
         listaSorteados = [];
         document.getElementById('lista-sorteio').innerHTML = listaSorteados;
 
@@ -47,7 +52,7 @@ function sortear() {
             }
         }
     } else {
-        alert('O sorteio só pode ser realizado com pelo menos 2 (duas) pessoas.');
+        alert('O sorteio só pode ser realizado com pelo menos 4 (duas) pessoas.');
     }
 
 }
