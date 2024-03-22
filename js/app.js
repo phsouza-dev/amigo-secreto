@@ -12,7 +12,7 @@ function adicionar() {
             gerarListaIncluidos();
             nome.value = '';
         } else {
-            alert('Não é possível adicionar um amigo secreto sem nome (vazio)');
+            alert('Não é possível adicionar um amigo secreto sem nome (vazio).');
         }
     } else {
         alert('O nome inserido já está na lista');
@@ -21,8 +21,9 @@ function adicionar() {
 
 function sortear() {
     let listaAleatoria = [];
+    let minimoParaSorteio = 4;
 
-    if (listaIncluidos.length >= 4) {
+    if (listaIncluidos.length >= minimoParaSorteio) {
         listaSorteados = [];
         document.getElementById('lista-sorteio').innerHTML = listaSorteados;
 
@@ -52,7 +53,7 @@ function sortear() {
             }
         }
     } else {
-        alert('O sorteio só pode ser realizado com pelo menos 4 (duas) pessoas.');
+        alert(`O sorteio só pode ser realizado com pelo menos ${minimoParaSorteio} pessoas.`);
     }
 
 }
